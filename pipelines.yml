@@ -1,5 +1,5 @@
 resources:
-  - name: prop1
+  - name: runpopprop
     type: PropertyBag
     configuration:
       key1: value1
@@ -11,10 +11,10 @@ pipelines:
         type: Bash
         configuration:
           outputResources:
-            - name: prop1
+            - name: runpopprop
         execution:
           onExecute:
-            - write_output prop1 runId=$run_number
+            - write_output runpopprop runId=$run_number
   - name: TRIGGER_OUT_1
     steps:
       - name: TRIGGER_OUT_1
@@ -31,7 +31,7 @@ pipelines:
         type: Bash
         configuration:
           inputResources:
-            - name: prop1
+            - name: runpopprop
         execution:
           onExecute:
             - printenv
