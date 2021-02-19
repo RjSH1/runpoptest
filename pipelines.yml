@@ -21,7 +21,7 @@ pipelines:
         type: Bash
         configuration:
           inputResources:
-            - name: prop1
+            - name: runpopprop
         execution:
           onExecute:
             - printenv
