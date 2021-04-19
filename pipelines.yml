@@ -32,6 +32,8 @@ pipelines:
         configuration:
           inputResources:
             - name: runpopprop
+          environmentVariables:
+            SOME_KEY: 'asd'
         execution:
           onExecute:
             - printenv
