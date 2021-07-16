@@ -68,8 +68,6 @@ pipelines:
         configuration:
           inputResources:
             - name: runpopprop
-          outputResources:
-            - name: runpopprop2
           environmentVariables:
             SOME_KEY: 'asd'
         execution:
