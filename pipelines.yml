@@ -44,7 +44,33 @@ pipelines:
         execution:
           onExecute:
             - printenv
+  - name: TRIGGER_OUT_1_3
+    steps:
+      - name: TRIGGER_OUT_2
+        type: Bash
+        configuration:
+          inputResources:
+            - name: runpopprop
+          outputResources:
+            - name: runpopprop2
+          environmentVariables:
+            SOME_KEY: 'asd'
+        execution:
+          onExecute:
+            - printenv
   - name: TRIGGER_OUT_3_1
+    steps:
+      - name: TRIGGER_OUT_2
+        type: Bash
+        configuration:
+          inputResources:
+            - name: runpopprop2
+          environmentVariables:
+            SOME_KEY: 'asd'
+        execution:
+          onExecute:
+            - printenv
+  - name: TRIGGER_OUT_3_2
     steps:
       - name: TRIGGER_OUT_2
         type: Bash
