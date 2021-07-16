@@ -9,6 +9,11 @@ resources:
     configuration:
       key1: value1
       key2: value2
+  - name: runpopprop3
+    type: PropertyBag
+    configuration:
+      key1: value1
+      key2: value2
 pipelines: 
   - name: TRIGGER
     steps:
@@ -27,6 +32,18 @@ pipelines:
         configuration:
           inputResources:
             - name: runpopprop
+          outputResources:
+            - name: runpopprop3
+        execution:
+          onExecute:
+            - printenv
+  - name: TRIGGER_OUT_3_3
+    steps:
+      - name: TRIGGER_OUT_1
+        type: Bash
+        configuration:
+          inputResources:
+            - name: runpopprop3
         execution:
           onExecute:
             - printenv
@@ -45,6 +62,20 @@ pipelines:
           onExecute:
             - printenv
   - name: TRIGGER_OUT_1_3
+    steps:
+      - name: TRIGGER_OUT_2
+        type: Bash
+        configuration:
+          inputResources:
+            - name: runpopprop
+          outputResources:
+            - name: runpopprop2
+          environmentVariables:
+            SOME_KEY: 'asd'
+        execution:
+          onExecute:
+            - printenv
+  - name: TRIGGER_OUT_1_4
     steps:
       - name: TRIGGER_OUT_2
         type: Bash
