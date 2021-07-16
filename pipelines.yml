@@ -37,7 +37,7 @@ pipelines:
         execution:
           onExecute:
             - printenv
-            - write_output runpopprop3 runId=$run_number            
+            #- write_output runpopprop3 runId=$run_number            
   - name: TRIGGER_OUT_3_3
     steps:
       - name: TRIGGER_OUT_1
