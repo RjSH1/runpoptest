@@ -4,6 +4,11 @@ resources:
     configuration:
       key1: value1
       key2: value2
+  - name: runpopprop2
+    type: PropertyBag
+    configuration:
+      key1: value1
+      key2: value2
 pipelines: 
   - name: TRIGGER
     steps:
@@ -15,7 +20,7 @@ pipelines:
         execution:
           onExecute:
             - write_output runpopprop runId=$run_number
-  - name: TRIGGER_OUT_1
+  - name: TRIGGER_OUT_1_1
     steps:
       - name: TRIGGER_OUT_1
         type: Bash
@@ -25,13 +30,27 @@ pipelines:
         execution:
           onExecute:
             - printenv
-  - name: TRIGGER_OUT_2
+  - name: TRIGGER_OUT_1_2
     steps:
       - name: TRIGGER_OUT_2
         type: Bash
         configuration:
           inputResources:
             - name: runpopprop
+          outputResources:
+            - name: runpopprop2
+          environmentVariables:
+            SOME_KEY: 'asd'
+        execution:
+          onExecute:
+            - printenv
+  - name: TRIGGER_OUT_3_1
+    steps:
+      - name: TRIGGER_OUT_2
+        type: Bash
+        configuration:
+          inputResources:
+            - name: runpopprop2
           environmentVariables:
             SOME_KEY: 'asd'
         execution:
