@@ -23,6 +23,10 @@ pipelines:
           outputResources:
             - name: runpopprop
         execution:
+          onStart:
+            #- msg="Run description updated from step $step_id"
+            - update_run_description "test"
+            - update_run_name "1.1.1"
           onExecute:
             - write_output runpopprop runId=$run_number
   - name: TRIGGER_OUT_1_1
